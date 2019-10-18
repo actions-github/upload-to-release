@@ -1,0 +1,23 @@
+# https://help.github.com/en/articles/contexts-and-expression-syntax-for-github-actions
+name: Test action
+
+on: [push]
+
+jobs:
+  test-file:
+    name: Test action execution
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v1
+        with:
+          fetch-depth: 1
+
+      - name: Create test file
+        run: echo "foo" > release_file
+
+      - name: Run current action
+        uses: ./
+        with:
+          file: './release_file'
+          type: 'text/plain'

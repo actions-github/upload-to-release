@@ -1,0 +1,10 @@
+# IDEs
+/nbproject
+/.idea
+
+# Temp dirs & trash
+/temp
+/tmp
+/.build
+/.docker
+.DS_Store

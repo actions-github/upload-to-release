@@ -1,0 +1,19 @@
+name: Upload to release
+description: Uploads a file to a GitHub release
+author: tarampampam
+
+branding:
+  icon: package
+  color: blue
+
+inputs:
+  file:
+    description: 'Input file'
+    required: true
+  type:
+    description: 'File type'
+    required: true
+
+runs:
+  using: docker
+  image: Dockerfile
