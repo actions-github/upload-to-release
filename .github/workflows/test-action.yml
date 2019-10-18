@@ -29,7 +29,7 @@ jobs:
         run: |
           cat ./upload_to_release_dry_run.debug
           DF="./upload_to_release_dry_run.debug"
-          grep -Fxq "https://uploads.github.com/repos/${GITHUB_REPOSITORY}/releases/${RELEASE_ID}/assets?name=${FILENAME}" "$DF"
+          grep -Fxq "https://uploads.github.com/repos/${GITHUB_REPOSITORY}/releases/${RELEASE_ID}/assets?name=release_file" "$DF"
           grep -Fxq "token TEST:TOKEN:HERE" "$DF"
           grep -Fxq "Content-Length: 4" "$DF"
           grep -Fxq "Content-Type: text/plain" "$DF"
