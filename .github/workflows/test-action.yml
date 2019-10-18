@@ -18,6 +18,8 @@ jobs:
 
       - name: Run current action
         uses: ./
+        env:
+          GITHUB_TOKEN: "TEST:TOKEN:HERE"
         with:
           file: './release_file'
           type: 'text/plain'
