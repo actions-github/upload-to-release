@@ -38,10 +38,10 @@ jobs:
         run: grep -Fq "token TEST:TOKEN:HERE" "${DRY_RUN_FILE}"
 
       - name: Test Content-Length
-        run: grep -q "Content-Length:\s?4" "${DRY_RUN_FILE}"
+        run: grep -q "Content-Length:\s4" "${DRY_RUN_FILE}"
 
       - name: Test Content-Type
-        run: grep -q 'Content-Type:\s?text/plain' "${DRY_RUN_FILE}"
+        run: grep -q 'Content-Type:\stext/plain' "${DRY_RUN_FILE}"
 
       - name: Test release file
         run: grep -q "File.*release_file" "${DRY_RUN_FILE}"
