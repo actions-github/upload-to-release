@@ -28,6 +28,8 @@ steps:
 
 - name: Upload asset to release
   uses: actions-github/upload-to-release@master
+  env:
+    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   with:
     file: './hi'
     type: 'application/octet-stream'
@@ -36,6 +38,8 @@ steps:
 
 - name: Upload asset to release
   uses: docker://gact/upload-to-release:latest
+  env:
+    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   with:
     file: './hi'
     type: 'application/octet-stream'
