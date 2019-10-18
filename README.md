@@ -26,7 +26,7 @@ steps:
     printf %s 'package main;import "fmt";func main(){fmt.Println("hi")}' > main.go
     go build -o ./hi main.go
 
-- name: Upload to release
+- name: Upload asset to release
   uses: actions-github/upload-to-release@master
   with:
     file: './hi'
@@ -34,7 +34,7 @@ steps:
 
 # Or use ready docker image:
 
-- name: Upload to release
+- name: Upload asset to release
   uses: docker://gact/upload-to-release:latest
   with:
     file: './hi'

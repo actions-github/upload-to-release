@@ -1,4 +1,4 @@
-name: Upload to release
+name: Upload asset to release
 description: Uploads a file to a GitHub release
 author: tarampampam
 
