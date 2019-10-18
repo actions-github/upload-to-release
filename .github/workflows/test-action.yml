@@ -3,6 +3,9 @@ name: Test action
 
 on: [push]
 
+env:
+  DRY_RUN_FILE: './upload_to_release_dry_run.debug'
+
 jobs:
   test-file:
     name: Test action execution
@@ -20,17 +23,27 @@ jobs:
         uses: ./
         env:
           GITHUB_TOKEN: "TEST:TOKEN:HERE"
+          GITHUB_REPOSITORY: "foo_repo"
+          RELEASE_ID: "foo_release_id"
         with:
           file: './release_file'
           type: 'text/plain'
           dry: 'true'
 
-      - name: Test dry run
-        run: |
-          cat ./upload_to_release_dry_run.debug
-          DF="./upload_to_release_dry_run.debug"
-          grep -Fxq "https://uploads.github.com/repos/${GITHUB_REPOSITORY}/releases/${RELEASE_ID}/assets?name=release_file" "$DF"
-          grep -Fxq "token TEST:TOKEN:HERE" "$DF"
-          grep -Fxq "Content-Length: 4" "$DF"
-          grep -Fxq "Content-Type: text/plain" "$DF"
-          grep -Fxq "release_file" "$DF"
+      - name: Show dry run file content
+        run: cat "${DRY_RUN_FILE}"
+
+      - name: Test upload url
+        run: grep -Fxq "https://uploads.github.com/repos/foo_repo/releases/foo_release_id/assets?name=release_file" "${DRY_RUN_FILE}"
+
+      - name: Test token
+        run: grep -Fxq "token TEST:TOKEN:HERE" "${DRY_RUN_FILE}"
+
+      - name: Test Content-Length
+        run: grep -Fxq 'Content-Length:\ 4' "${DRY_RUN_FILE}"
+
+      - name: Test Content-Type
+        run: grep -Fxq 'Content-Type:\ text/plain' "${DRY_RUN_FILE}"
+
+      - name: Test release file
+        run: grep -Fxq "release_file" "${DRY_RUN_FILE}"
