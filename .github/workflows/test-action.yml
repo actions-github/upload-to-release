@@ -32,18 +32,16 @@ jobs:
         run: cat "${DRY_RUN_FILE}"
 
       - name: Test upload url
-        run: |
-          echo "https://uploads.github.com/repos/${GITHUB_REPOSITORY}/releases/null/assets?name=release_file"
-          grep -Fxq "https://uploads.github.com/repos/${GITHUB_REPOSITORY}/releases/null/assets?name=release_file" "${DRY_RUN_FILE}"
+        run: grep -Fq "https://uploads.github.com/repos/${GITHUB_REPOSITORY}/releases/null/assets?name=release_file" "${DRY_RUN_FILE}"
 
       - name: Test token
-        run: grep -Fxq "token TEST:TOKEN:HERE" "${DRY_RUN_FILE}"
+        run: grep -Fq "token TEST:TOKEN:HERE" "${DRY_RUN_FILE}"
 
       - name: Test Content-Length
-        run: grep -Fxq 'Content-Length:\ 4' "${DRY_RUN_FILE}"
+        run: grep -Fq 'Content-Length:\ 4' "${DRY_RUN_FILE}"
 
       - name: Test Content-Type
-        run: grep -Fxq 'Content-Type:\ text/plain' "${DRY_RUN_FILE}"
+        run: grep -Fq 'Content-Type:\ text/plain' "${DRY_RUN_FILE}"
 
       - name: Test release file
-        run: grep -Fxq "release_file" "${DRY_RUN_FILE}"
+        run: grep -Fq "release_file" "${DRY_RUN_FILE}"
