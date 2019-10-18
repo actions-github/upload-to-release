@@ -30,7 +30,17 @@ fi
 FILENAME=$(basename $INPUT_FILE);
 UPLOAD_URL="https://uploads.github.com/repos/${GITHUB_REPOSITORY}/releases/${RELEASE_ID}/assets?name=${FILENAME}";
 
-echo "[INFO] Upload url: [$UPLOAD_URL]";
+if [ "$INPUT_DRY" = true ]; then
+  DR="./upload_to_release_dry_run.debug";
+
+  echo "[DRY] Upload url: [$UPLOAD_URL]" > "$DR"
+  echo "[DRY] Auth: [$AUTH_HEADER]" >> "$DR";
+  echo "[DRY] Content length: [$CONTENT_LENGTH_HEADER]" >> "$DR";
+  echo "[DRY] Content type: [$CONTENT_TYPE_HEADER]" >> "$DR";
+  echo "[DRY] File: [$INPUT_FILE]" >> "$DR";
+
+  exit 0;
+fi
 
 # Upload the file
 curl \
@@ -40,4 +50,4 @@ curl \
   -H "${CONTENT_LENGTH_HEADER}" \
   -H "${CONTENT_TYPE_HEADER}" \
   --upload-file "$INPUT_FILE" \
-  "${UPLOAD_URL}"
+  "${UPLOAD_URL}";

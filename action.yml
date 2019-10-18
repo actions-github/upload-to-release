@@ -13,6 +13,9 @@ inputs:
   type:
     description: 'File type'
     required: true
+  dry:
+    description: 'Dry run (true|false)'
+    required: false
 
 runs:
   using: docker

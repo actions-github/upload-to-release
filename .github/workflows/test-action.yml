@@ -23,3 +23,7 @@ jobs:
         with:
           file: './release_file'
           type: 'text/plain'
+          dry: 'true'
+
+      - name: Test dry run
+        run: cat ./upload_to_release_dry_run.debug
