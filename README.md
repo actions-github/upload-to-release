@@ -27,7 +27,7 @@ steps:
     go build -o ./hi main.go
 
 - name: Upload asset to release
-  uses: actions-github/upload-to-release@master
+  uses: gacts/upload-to-release@master
   env:
     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   with:
@@ -37,7 +37,7 @@ steps:
 # Or use ready docker image:
 
 - name: Upload asset to release
-  uses: docker://gact/upload-to-release:latest
+  uses: docker://gacts/upload-to-release:latest
   env:
     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   with:
@@ -58,16 +58,16 @@ If you will find any package errors, please, [make an issue][link_create_issue] 
 
 This is open-sourced software licensed under the [WTFPL License][link_license].
 
-[badge_build]:https://github.com/actions-github/upload-to-release/workflows/Test%20action/badge.svg
-[badge_docker_build]:https://img.shields.io/docker/cloud/build/gact/upload-to-release.svg?maxAge=30
-[badge_release_version]:https://img.shields.io/github/release/actions-github/upload-to-release.svg?maxAge=30
-[badge_license]:https://img.shields.io/github/license/actions-github/upload-to-release.svg?longCache=true
-[badge_issues]:https://img.shields.io/github/issues/actions-github/upload-to-release.svg?maxAge=45
-[badge_pulls]:https://img.shields.io/github/issues-pr/actions-github/upload-to-release.svg?maxAge=45
+[badge_build]:https://github.com/gacts/upload-to-release/workflows/Test%20action/badge.svg
+[badge_docker_build]:https://img.shields.io/docker/cloud/build/gacts/upload-to-release.svg?maxAge=30
+[badge_release_version]:https://img.shields.io/github/release/gacts/upload-to-release.svg?maxAge=30
+[badge_license]:https://img.shields.io/github/license/gacts/upload-to-release.svg?longCache=true
+[badge_issues]:https://img.shields.io/github/issues/gacts/upload-to-release.svg?maxAge=45
+[badge_pulls]:https://img.shields.io/github/issues-pr/gacts/upload-to-release.svg?maxAge=45
 
-[link_build]:https://github.com/actions-github/upload-to-release/actions
-[link_license]:https://github.com/actions-github/upload-to-release/blob/master/LICENSE
-[link_issues]:https://github.com/actions-github/upload-to-release/issues
-[link_create_issue]:https://github.com/actions-github/upload-to-release/issues/new
-[link_pulls]:https://github.com/actions-github/upload-to-release/pulls
-[link_docker_hub]:https://hub.docker.com/r/gact/upload-to-release
+[link_build]:https://github.com/gacts/upload-to-release/actions
+[link_license]:https://github.com/gacts/upload-to-release/blob/master/LICENSE
+[link_issues]:https://github.com/gacts/upload-to-release/issues
+[link_create_issue]:https://github.com/gacts/upload-to-release/issues/new
+[link_pulls]:https://github.com/gacts/upload-to-release/pulls
+[link_docker_hub]:https://hub.docker.com/r/gacts/upload-to-release

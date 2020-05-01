@@ -31,7 +31,7 @@ FILENAME=$(basename $INPUT_FILE);
 UPLOAD_URL="https://uploads.github.com/repos/${GITHUB_REPOSITORY}/releases/${RELEASE_ID}/assets?name=${FILENAME}";
 
 if [ "$INPUT_DRY" = true ]; then
-  echo "[DRY] Upload url: [$UPLOAD_URL]" > "${DRY_RUN_FILE}"
+  echo "[DRY] Upload url: [$UPLOAD_URL]" > "${DRY_RUN_FILE}";
   echo "[DRY] Auth: [$AUTH_HEADER]" >> "${DRY_RUN_FILE}";
   echo "[DRY] Content length: [$CONTENT_LENGTH_HEADER]" >> "${DRY_RUN_FILE}";
   echo "[DRY] Content type: [$CONTENT_TYPE_HEADER]" >> "${DRY_RUN_FILE}";
@@ -42,6 +42,7 @@ fi
 
 # Upload the file
 curl \
+  -f \
   -sSL \
   -XPOST \
   -H "${AUTH_HEADER}" \
